@@ -1,0 +1,111 @@
+name: Battery Optimizer
+version: "1.0.2"
+slug: battery-optimizer
+description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
+url: https://github.com/andy-moore-energy/scheduler
+# NOTE: no `image:` field here — this config is used by DEV (deploy.sh) which builds
+# locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
+# into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
+arch:
+  - amd64
+  # aarch64 and armv7 support to be added once multi-arch hashes are resolved
+startup: services
+boot: manual
+init: false
+homeassistant_api: true
+hassio_api: true
+hassio_role: default
+
+options:
+  # Testing Mode
+  testing: false
+
+  # Input Sensors
+  purchase_forecast: "sensor.ep_purchase_price"
+  sell_forecast: "sensor.ep_selling_price"
+  solar_forecast_prefix: "sensor.energy_production"
+  demand_forecast: "sensor.ef_forecast_simple"
+  battery_soc: "sensor.co4esnfrn351311_soc_level"
+
+  # Battery Physical Parameters
+  capacity_kwh: 10.0
+  charge_power_kw: 5.0
+  discharge_power_kw: 5.0
+  rte: 0.9
+  cycles_per_day_max: 1.0
+  soc_min: 0
+  soc_max: 100
+  degradation_cost_per_kwh: 0.06
+  grid_connection_kw: 25.0
+  load_shedding_penalty: 10.0
+
+  # Battery Control
+  grid_charging: true
+  grid_discharging: true
+  # Extend idle periods that border a buffering period into buffering mode
+  extend_buffering_periods: true
+
+  # Scheduling & Optimization
+  timestep_minutes: 15
+  forecast_days: 5
+  run_interval_minutes: 15
+
+  # Logging
+  log_level: "INFO"
+
+  # History Tracking
+  history_enabled: true
+  history_retention_days: 120
+  history_oem_battery_state: "sensor.bo_oem_battery_state"
+  # Map OEM battery state names to optimizer mode names for the planned vs realised chart.
+  # Format: "OEM state name=Optimizer mode name" e.g. "Charging=Manual charge"
+  # Valid optimizer modes: Idle, Buffering charge, Buffering discharge, Manual charge, Manual discharge
+  history_oem_state_map: []
+
+schema:
+  # Testing Mode
+  testing: bool
+
+  # Input Sensors
+  purchase_forecast: str
+  sell_forecast: str
+  solar_forecast_prefix: str
+  demand_forecast: str
+  battery_soc: str
+
+  # Battery Physical Parameters
+  capacity_kwh: float(0.1,)
+  charge_power_kw: float(0.1,)
+  discharge_power_kw: float(0.1,)
+  rte: float(0.1,1.0)
+  cycles_per_day_max: float(0.1,)
+  soc_min: int(0,100)
+  soc_max: int(0,100)
+  degradation_cost_per_kwh: float(0,)
+  grid_connection_kw: float(0.1,)
+  load_shedding_penalty: float(0,)
+
+  # Battery Control
+  grid_charging: bool
+  grid_discharging: bool
+  extend_buffering_periods: bool
+
+  # Scheduling & Optimization
+  timestep_minutes: int(1,60)
+  forecast_days: int(1,30)
+  run_interval_minutes: int(1,1440)
+
+  # Logging
+  log_level: list(DEBUG|INFO|WARNING|ERROR|CRITICAL)
+
+  # History Tracking
+  history_enabled: bool
+  history_retention_days: int(1,365)
+  history_oem_battery_state: str
+  history_oem_state_map:
+    - str
+
+map:
+  - share:rw
+  - config:rw
+image: ghcr.io/samba-smart-asset-management/battery-optimizer
