@@ -3,7 +3,7 @@
 # locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
 # into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
 name: Energy Forecaster
-version: "0.1.24"
+version: "0.1.25"
 slug: energy_forecaster
 description: Prophet-based energy consumption forecasting for Home Assistant
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-forecaster
@@ -30,7 +30,7 @@ options:
 schema:
   influxdb_url: url
   influxdb_username: str
-  influxdb_password: str  # pragma: allowlist secret
+  influxdb_password: str
   influxdb_database: str
   forecast_interval_minutes: int(15,1440)
   log_level: list(debug|info|warning|error)
