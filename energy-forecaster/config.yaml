@@ -3,15 +3,13 @@
 # locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
 # into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
 name: Energy Forecaster
-version: "0.1.25"
+version: "0.1.26"
 slug: energy_forecaster
 description: Prophet-based energy consumption forecasting for Home Assistant
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-forecaster
 arch:
-  - aarch64
   - amd64
-  - armv7
-  - i386
+  # aarch64 and armv7 support to be added once multi-arch builds are configured
 startup: services
 boot: auto
 init: false
