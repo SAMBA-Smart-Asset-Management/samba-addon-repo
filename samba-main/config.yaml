@@ -1,0 +1,18 @@
+name: Samba Main
+version: "0.2.8"
+slug: samba-main
+description: SAMBA core integration and coordinator
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-main
+arch:
+  - amd64
+startup: application
+boot: auto
+init: false
+hassio_api: true
+
+options: {}
+schema: {}
+
+map:
+  - config:rw
+image: ghcr.io/samba-smart-asset-management/samba-main
