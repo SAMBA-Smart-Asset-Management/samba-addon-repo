@@ -1,5 +1,5 @@
 name: Solar Production
-version: "0.1.0"
+version: "0.1.2"
 slug: solar-production
 description: Solar production forecasting and control integration
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-solar-production
@@ -15,3 +15,4 @@ schema: {}
 
 map:
   - config:rw
+image: ghcr.io/samba-smart-asset-management/solar-production
