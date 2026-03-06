@@ -1,0 +1,17 @@
+name: Energy Price
+version: "0.2.0"
+slug: energy-price
+description: Dynamic electricity price integration
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-price
+arch:
+  - amd64
+startup: application
+boot: auto
+init: false
+hassio_api: true
+
+options: {}
+schema: {}
+
+map:
+  - config:rw
