@@ -1,5 +1,5 @@
 name: SAMBA Branding
-version: "1.0.0"
+version: "1.0.1"
 slug: samba-branding
 description: White-label branding for SAMBA Home Assistant instances
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-branding-ha
