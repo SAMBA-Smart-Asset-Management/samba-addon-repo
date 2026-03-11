@@ -1,0 +1,19 @@
+name: SAMBA Branding
+version: "1.0.0"
+slug: samba-branding
+description: White-label branding for SAMBA Home Assistant instances
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-branding-ha
+arch:
+  - amd64
+startup: application
+boot: auto
+init: false
+hassio_api: true
+hassio_role: manager
+
+options: {}
+schema: {}
+
+map:
+  - config:rw
+image: ghcr.io/samba-smart-asset-management/samba-branding
