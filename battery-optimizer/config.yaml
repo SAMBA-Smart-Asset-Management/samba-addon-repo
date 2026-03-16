@@ -1,5 +1,5 @@
 name: Battery Optimizer
-version: "1.0.5"
+version: "1.0.6"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
@@ -17,15 +17,16 @@ hassio_api: true
 hassio_role: default
 
 options:
-  # Testing Mode
-  testing: false
+  # OEM Battery Entity Mapping
+  oem_battery_state_entity: ""
+  oem_battery_power_entity: ""
+  battery_soc: ""
 
   # Input Sensors
   purchase_forecast: "sensor.ep_purchase_price"
   sell_forecast: "sensor.ep_selling_price"
   solar_forecast_prefix: "sensor.energy_production"
   demand_forecast: "sensor.ef_forecast_simple"
-  battery_soc: "sensor.co4esnfrn351311_soc_level"
 
   # Battery Physical Parameters
   capacity_kwh: 10.0
@@ -42,7 +43,6 @@ options:
   # Battery Control
   grid_charging: true
   grid_discharging: true
-  # Extend idle periods that border a buffering period into buffering mode
   extend_buffering_periods: true
 
   # Scheduling & Optimization
@@ -50,28 +50,27 @@ options:
   forecast_days: 5
   run_interval_minutes: 15
 
-  # Logging
-  log_level: "INFO"
-
   # History Tracking
   history_enabled: true
   history_retention_days: 120
-  history_oem_battery_state: "sensor.bo_oem_battery_state"
-  # Map OEM battery state names to optimizer mode names for the planned vs realised chart.
-  # Format: "OEM state name=Optimizer mode name" e.g. "Charging=Manual charge"
-  # Valid optimizer modes: Idle, Buffering charge, Buffering discharge, Manual charge, Manual discharge
-  history_oem_state_map: []
+  # Logging
+  log_level: "INFO"
+
+  # Testing Mode
+  testing: false
+  force_commissioning_test: false
 
 schema:
-  # Testing Mode
-  testing: bool
+  # OEM Battery Entity Mapping
+  oem_battery_state_entity: str
+  oem_battery_power_entity: str
+  battery_soc: str
 
   # Input Sensors
   purchase_forecast: str
   sell_forecast: str
   solar_forecast_prefix: str
   demand_forecast: str
-  battery_soc: str
 
   # Battery Physical Parameters
   capacity_kwh: float(0.1,)
@@ -95,17 +94,18 @@ schema:
   forecast_days: int(1,30)
   run_interval_minutes: int(1,1440)
 
-  # Logging
-  log_level: list(DEBUG|INFO|WARNING|ERROR|CRITICAL)
-
   # History Tracking
   history_enabled: bool
   history_retention_days: int(1,365)
-  history_oem_battery_state: str
-  history_oem_state_map:
-    - str
+  # Logging
+  log_level: list(DEBUG|INFO|WARNING)
+
+  # Testing Mode
+  testing: bool
+  force_commissioning_test: bool
 
 map:
   - share:rw
   - config:rw
+  - addons:ro
 image: ghcr.io/samba-smart-asset-management/battery-optimizer
