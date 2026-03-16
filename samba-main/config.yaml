@@ -1,5 +1,5 @@
 name: Samba Main
-version: "0.2.8"
+version: "0.3.0"
 slug: samba-main
 description: SAMBA core integration and coordinator
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-main
@@ -9,6 +9,7 @@ startup: application
 boot: auto
 init: false
 hassio_api: true
+hassio_role: manager
 
 options: {}
 schema: {}
