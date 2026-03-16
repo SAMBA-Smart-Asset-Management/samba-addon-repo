@@ -1,5 +1,5 @@
 name: Solar Production
-version: "0.5.4"
+version: "0.5.5"
 slug: solar-production
 description: Solar production forecasting and control integration
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-solar-production
