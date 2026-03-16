@@ -1,5 +1,5 @@
 name: Solar Production
-version: "0.5.5"
+version: "0.5.6"
 slug: solar-production
 description: Solar production forecasting and control integration
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-solar-production
@@ -9,6 +9,7 @@ startup: application
 boot: auto
 init: false
 hassio_api: true
+homeassistant_api: true
 
 options: {}
 schema: {}
