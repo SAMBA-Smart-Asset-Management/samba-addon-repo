@@ -1,5 +1,5 @@
 name: Samba Main
-version: "0.3.0"
+version: "0.3.1"
 slug: samba-main
 description: SAMBA core integration and coordinator
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-main
