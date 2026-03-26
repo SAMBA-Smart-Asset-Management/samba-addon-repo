@@ -1,0 +1,33 @@
+name: SAMBA Monitoring
+version: "0.1.0"
+slug: samba-monitoring
+description: Grafana Alloy addon for SAMBA fleet health monitoring — streams logs to Grafana Cloud Loki
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-monitoring
+# NOTE: no `image:` field here — this config is used by DEV (deploy.sh) which builds
+# locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
+# into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
+arch:
+  - amd64
+  # aarch64 and armv7 to be added once multi-arch hashes are resolved
+startup: services
+boot: auto
+init: false
+homeassistant_api: false
+hassio_api: true
+hassio_role: default
+
+options:
+  grafana_loki_url: ""
+  grafana_user_id: ""
+  grafana_api_key: ""
+  instance_name: ""
+
+schema:
+  grafana_loki_url: str
+  grafana_user_id: str
+  grafana_api_key: str
+  instance_name: str
+
+map:
+  - share:rw
+image: ghcr.io/samba-smart-asset-management/samba-monitoring
