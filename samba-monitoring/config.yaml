@@ -1,5 +1,5 @@
 name: SAMBA Monitoring
-version: "0.2.19"
+version: "0.2.20"
 slug: samba-monitoring
 description: Grafana Alloy addon for SAMBA fleet health monitoring — streams logs to Grafana Cloud Loki
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-monitoring
