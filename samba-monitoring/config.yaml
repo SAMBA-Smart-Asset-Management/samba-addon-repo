@@ -1,5 +1,5 @@
 name: SAMBA Monitoring
-version: "0.2.26"
+version: "0.2.30"
 slug: samba-monitoring
 description: Grafana Alloy addon for SAMBA fleet health monitoring — streams logs to Grafana Cloud Loki
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-monitoring
@@ -21,13 +21,13 @@ journald: true
 options:
   instance_name: ""
   # Logs (Loki) — requires API key with logs:write scope
-  grafana_loki_url: ""
-  grafana_logs_user_id: ""
+  grafana_loki_url: "https://logs-prod-012.grafana.net"
+  grafana_logs_user_id: "1530602"
   grafana_logs_api_key: ""
-  # Entity states (InfluxDB/Mimir) — requires API key with metrics:write scope
-  # Leave grafana_influx_url empty to disable entity state collection
-  grafana_influx_url: ""
-  grafana_metrics_user_id: ""
+  # Entity states (Prometheus remote_write / Grafana Mimir) — requires API key with metrics:write scope
+  # Base URL only — code appends /api/v1/push. Leave empty to disable entity state collection.
+  grafana_influx_url: "https://prometheus-prod-65-prod-eu-west-2.grafana.net"
+  grafana_metrics_user_id: "3069854"
   grafana_metrics_api_key: ""
 
 schema:
