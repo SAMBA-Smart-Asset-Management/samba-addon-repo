@@ -1,5 +1,5 @@
 name: Samba Energy Core
-version: "0.6.9"
+version: "0.6.11"
 slug: energy-core
 description: Foundation energy accounting integration for SAMBA
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-core
