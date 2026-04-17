@@ -1,5 +1,5 @@
 name: SAMBA App
-version: "1.5.0"
+version: "1.6.0"
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
@@ -10,6 +10,7 @@ init: false
 homeassistant_api: true
 ingress: true
 ingress_port: 8099
+ingress_panel: true
 panel_icon: mdi:home-lightning-bolt
 panel_title: SAMBA App
 ports:
