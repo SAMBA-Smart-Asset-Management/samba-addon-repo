@@ -1,7 +1,7 @@
 name: SAMBA Monitoring
-version: "0.2.32"
+version: "0.3.0"
 slug: samba-monitoring
-description: Grafana Alloy addon for SAMBA fleet health monitoring — streams logs to Grafana Cloud Loki
+description: SAMBA fleet observability — logs to Grafana Cloud Loki, metrics to Mimir, addon inventory + version drift
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-monitoring
 # NOTE: no `image:` field here — this config is used by DEV (deploy.sh) which builds
 # locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
