@@ -1,5 +1,5 @@
 name: SAMBA Monitoring
-version: "0.3.0"
+version: "0.3.1"
 slug: samba-monitoring
 description: SAMBA fleet observability — logs to Grafana Cloud Loki, metrics to Mimir, addon inventory + version drift
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-monitoring
