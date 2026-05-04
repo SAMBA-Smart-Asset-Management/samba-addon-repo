@@ -1,5 +1,5 @@
 name: Battery Optimizer
-version: "1.0.7"
+version: "1.0.9"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
@@ -52,13 +52,9 @@ options:
 
   # History Tracking
   history_enabled: true
-  history_retention_days: 120
-  # Logging
-  log_level: "INFO"
 
-  # Testing Mode
-  testing: false
-  force_commissioning_test: false
+  # Fallback Mode
+  fallback_mode: "Idle"
 
 schema:
   # OEM Battery Entity Mapping
@@ -96,13 +92,9 @@ schema:
 
   # History Tracking
   history_enabled: bool
-  history_retention_days: int(1,365)
-  # Logging
-  log_level: list(DEBUG|INFO|WARNING)
 
-  # Testing Mode
-  testing: bool
-  force_commissioning_test: bool
+  # Fallback Mode
+  fallback_mode: list(Idle|Buffering charge|Buffering discharge)
 
 map:
   - share:rw
