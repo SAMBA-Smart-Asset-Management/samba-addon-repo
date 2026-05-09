@@ -1,0 +1,12 @@
+name: Trigger code-review project automation
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  dispatch:
+    if: github.event.label.name == 'code-review'
+    uses: SAMBA-Smart-Asset-Management/samba-dev-ops/.github/workflows/add-to-code-review-project.yml@main
+    with:
+      issue_node_id: ${{ github.event.issue.node_id }}
