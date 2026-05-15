@@ -1,5 +1,5 @@
 name: Battery Optimizer
-version: "1.4.0"
+version: "1.5.0"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
