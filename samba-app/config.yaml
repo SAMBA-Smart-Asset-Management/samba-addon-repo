@@ -1,5 +1,5 @@
 name: SAMBA App
-version: "1.9.3"
+version: "1.9.5"
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
