@@ -1,9 +1,9 @@
 name: Battery Optimizer
-version: "1.6.5"
+version: "1.7.0"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
-# NOTE: no `image:` field here — this config is used by DEV (deploy.sh) which builds
+# NOTE: no `image:` field here — this config is used by DEV (dev-deploy.sh) which builds
 # locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
 # into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
 arch:
@@ -22,12 +22,6 @@ options:
   oem_battery_power_entity: ""
   battery_soc: ""
 
-  # Input Sensors
-  purchase_forecast: "sensor.ep_purchase_price"
-  sell_forecast: "sensor.ep_selling_price"
-  solar_forecast_prefix: "sensor.energy_production"
-  demand_forecast: "sensor.ef_forecast_simple"
-
   # Battery Physical Parameters
   capacity_kwh: 10.0
   charge_power_kw: 5.0
@@ -38,17 +32,10 @@ options:
   soc_max: 100
   degradation_cost_per_kwh: 0.06
   grid_connection_kw: 25.0
-  load_shedding_penalty: 10.0
-
   # Battery Control
   grid_charging: true
   grid_discharging: true
   extend_buffering_periods: true
-
-  # Scheduling & Optimization
-  timestep_minutes: 15
-  forecast_days: 5
-  run_interval_minutes: 15
 
   # History Tracking
   history_enabled: true
@@ -62,12 +49,6 @@ schema:
   oem_battery_power_entity: str
   battery_soc: str
 
-  # Input Sensors
-  purchase_forecast: str
-  sell_forecast: str
-  solar_forecast_prefix: str
-  demand_forecast: str
-
   # Battery Physical Parameters
   capacity_kwh: float(0.1,)
   charge_power_kw: float(0.1,)
@@ -78,17 +59,10 @@ schema:
   soc_max: int(0,100)
   degradation_cost_per_kwh: float(0,)
   grid_connection_kw: float(0.1,)
-  load_shedding_penalty: float(0,)
-
   # Battery Control
   grid_charging: bool
   grid_discharging: bool
   extend_buffering_periods: bool
-
-  # Scheduling & Optimization
-  timestep_minutes: int(1,60)
-  forecast_days: int(1,30)
-  run_interval_minutes: int(1,1440)
 
   # History Tracking
   history_enabled: bool
