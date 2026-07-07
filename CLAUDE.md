@@ -26,6 +26,15 @@ Minimize token usage at all times:
 - **Staging**: https://or24.smart-homie.nl/ — live test variant, first deploy after dev
 - **Production**: Live customer systems via backup-restore on new mini-PCs
 
+
+## Home Assistant REST API
+- **Token**: Set env var `HA_REST_API_TOKEN` (Long-Lived Access Token — vraag aan Leon of check team password manager)
+- **Base URL**: `http://10.0.40.45:8123/api/`
+- **Usage**: `Authorization: Bearer $HA_REST_API_TOKEN`
+- **Restart**: `POST /api/services/homeassistant/restart`
+- **Status check**: `GET /api/`
+- Store the token in a local `.env` file (already in `.gitignore`), NEVER commit the token to git
+
 ## Development & Testing Workflow
 1. Claude builds/modifies code locally
 2. Claude uploads to HA test environment via Samba Share
@@ -33,9 +42,50 @@ Minimize token usage at all times:
 4. **User tests in HA** — Claude does NOT test in HA unless explicitly asked
 5. User reports results, Claude iterates if needed
 
+## Git Workflow (CRITICAL)
+
+**Never push directly to `main`.** All changes go through feature branch → `develop` → PR → CI → merge.
+
+### Branch Model:
+```
+main (stable releases)
+  └── develop (altijd deploybare staat — wat op HA test draait)
+        ├── feat/overzicht-tab
+        ├── feat/inverter-modes
+        └── feat/...
+```
+
+### Regels:
+- `develop` is altijd wat op HA test draait — alle feature branches mergen eerst naar `develop`
+- Feature branches starten vanaf `develop` en worden regelmatig gerebased/gemerged met `develop`
+- Deploy altijd vanaf `develop`, nooit rechtstreeks vanaf een feature branch
+- Feature branch naamgeving: `feat/<beschrijving>`, `fix/<beschrijving>`, `refactor/<beschrijving>`
+
+### Step-by-step:
+1. Start feature branch: `git checkout develop && git pull && git checkout -b feat/my-feature`
+2. Werk op feature branch, commit regelmatig
+3. Merge terug naar develop: `git checkout develop && git merge feat/my-feature`
+4. Deploy naar HA test vanuit `develop` (via Samba Share of `deploy.sh`)
+5. Na testen: push develop, open PR naar `main`: `gh pr create --base main`
+6. Wait for ALL CI checks to pass: `gh pr checks <PR_NUMBER> --watch`
+7. Only merge when every check shows `pass`: `gh pr merge <PR_NUMBER> --merge`
+
+### Tagging a release (BELANGRIJK):
+Zonder tag ziet HA geen update, ook al staat de code op main. HACS en de addon-repo detecteren alleen git tags.
+
+After merging to `main`:
+1. Bump `version` in `manifest.json` (en `const.py` VERSION als het project een dashboard heeft)
+2. Commit en push de version bump
+3. Tag en push:
+```bash
+git checkout main && git pull origin main
+git tag vX.Y.Z && git push origin vX.Y.Z
+```
+Do NOT use `git push --tags` (pushes all tags). Push the specific tag only.
+
 ## Deployment Flow
-1. Dev: `source deploy.sh` to test environment
-2. Release: `git tag v1.x.y && git push --tags`
+1. Dev: deploy naar HA test vanuit `develop` branch (via Samba Share of `deploy.sh`)
+2. Release: merge `develop` → `main` via PR, then `git tag vX.Y.Z && git push origin vX.Y.Z`
 3. CI (GitHub Actions): Docker build → GHCR push → metadata to samba-addon-repo (GitHub Pages)
 4. HA machines: poll GitHub Pages → pull image from GHCR (private, via registries.yaml token)
 5. New sites: HA backup restore on mini-PC + `setup-ha-machine.sh` for GHCR credentials
