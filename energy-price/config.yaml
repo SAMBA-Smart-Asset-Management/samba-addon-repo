@@ -1,5 +1,5 @@
 name: Energy Price
-version: "0.3.5"
+version: "0.4.0"
 slug: energy-price
 description: Dynamic electricity price integration
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-price
