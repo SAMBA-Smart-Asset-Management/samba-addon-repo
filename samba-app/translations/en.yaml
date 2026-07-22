@@ -1,0 +1,50 @@
+configuration:
+  username:
+    name: Default username
+    description: >-
+      Username of the default login (the "main" user). Handy for a single login.
+      Can be turned off together with the password via "Enable default login".
+  password:
+    name: Default password
+    description: >-
+      Password of the default login. Leave empty if you only want to use app
+      accounts and disable the default login.
+  enable_default_login:
+    name: Enable default login
+    description: >-
+      On = the default username/password above may log in. Off = only the app
+      accounts (e-mail addresses) below can log in; the default login no longer
+      works.
+  ha_token:
+    name: Home Assistant token
+    description: >-
+      Optional. On Home Assistant OS a token is used automatically, so normally
+      leave this empty. Only set a long-lived token if the add-on runs outside
+      Supervisor.
+  enable_solar:
+    name: Show solar module
+    description: Shows the Solar module in the app.
+  enable_battery:
+    name: Show battery module
+    description: Shows the Battery module in the app.
+  enable_devices:
+    name: Show devices module
+    description: Shows the Devices module in the app.
+  app_accounts:
+    name: App accounts
+    description: >-
+      E-mail addresses that get access to the app (e-mail = login name). Leave
+      "password" EMPTY → the user automatically receives an invitation e-mail
+      with a QR code and sets their own password. Only fill "password" if you
+      want to set one manually (no invitation is sent then). Use "lang" to choose
+      the language of the invitation e-mail (nl or en).
+  extra_accounts:
+    name: Allow extra accounts (max 10)
+    description: >-
+      Off = up to 3 app accounts. On = up to 10 app accounts (paid add-on).
+  site_url:
+    name: Site URL
+    description: >-
+      Public URL of this site, e.g. https://customer.samba.energy. Used for the
+      QR code and the set-password link in the invitation e-mail. Leave empty to
+      auto-detect it from the Cloudflared add-on.

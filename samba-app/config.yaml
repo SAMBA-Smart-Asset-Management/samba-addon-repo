@@ -1,6 +1,6 @@
 name: SAMBA App
 
-version: "1.53.0"
+version: "1.54.0"
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
@@ -9,6 +9,8 @@ arch:
 startup: application
 init: false
 homeassistant_api: true
+hassio_api: true
+hassio_role: manager
 ingress: true
 ingress_port: 8099
 ingress_panel: true
@@ -23,8 +25,8 @@ map:
 options:
   username: ""
   password: ""
+  enable_default_login: true
   ha_token: ""
-  vapid_subject: ""
   enable_solar: true
   enable_battery: true
   enable_devices: true
@@ -32,10 +34,10 @@ options:
   extra_accounts: false
   site_url: ""
 schema:
-  username: str
-  password: password
+  username: str?
+  password: password?
+  enable_default_login: bool
   ha_token: str?
-  vapid_subject: str?
   enable_solar: bool
   enable_battery: bool
   enable_devices: bool

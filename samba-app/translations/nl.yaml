@@ -1,0 +1,52 @@
+configuration:
+  username:
+    name: Standaard gebruikersnaam
+    description: >-
+      Gebruikersnaam van de standaard-login (de "hoofd"-gebruiker). Handig voor
+      een enkele inlog. Kan samen met het wachtwoord worden uitgezet via
+      "Standaard-login inschakelen".
+  password:
+    name: Standaard wachtwoord
+    description: >-
+      Wachtwoord van de standaard-login. Laat leeg als je alleen met
+      app-accounts wilt werken en de standaard-login uitzet.
+  enable_default_login:
+    name: Standaard-login inschakelen
+    description: >-
+      Aan = de standaard gebruikersnaam/wachtwoord hierboven mag inloggen.
+      Uit = alleen de app-accounts (e-mailadressen) hieronder kunnen inloggen;
+      de standaard-login werkt dan niet meer.
+  ha_token:
+    name: Home Assistant-token
+    description: >-
+      Optioneel. Op Home Assistant OS wordt automatisch een token gebruikt, dus
+      normaal leeg laten. Vul alleen een long-lived token in als de add-on
+      buiten Supervisor draait.
+  enable_solar:
+    name: Zonne-module tonen
+    description: Toont de Solar-module in de app.
+  enable_battery:
+    name: Batterij-module tonen
+    description: Toont de Batterij-module in de app.
+  enable_devices:
+    name: Apparaten-module tonen
+    description: Toont de Apparaten-module in de app.
+  app_accounts:
+    name: App-accounts
+    description: >-
+      E-mailadressen die toegang krijgen tot de app (e-mail = inlognaam). Laat
+      "password" LEEG → de gebruiker krijgt automatisch een uitnodigingsmail met
+      QR-code en kiest zelf een wachtwoord. Vul "password" alleen in als je
+      handmatig een wachtwoord wilt zetten (dan wordt er geen uitnodiging
+      gestuurd). Met "lang" kies je de taal van de uitnodigingsmail (nl of en).
+  extra_accounts:
+    name: Extra accounts toestaan (max. 10)
+    description: >-
+      Uit = maximaal 3 app-accounts. Aan = maximaal 10 app-accounts (betaalde
+      uitbreiding).
+  site_url:
+    name: Site-URL
+    description: >-
+      Publieke URL van deze site, bijv. https://klant.samba.energy. Wordt
+      gebruikt voor de QR-code en de set-wachtwoord-link in de uitnodigingsmail.
+      Laat leeg om automatisch te bepalen via de Cloudflared add-on.
