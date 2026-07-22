@@ -1,6 +1,6 @@
 name: SAMBA App
 
-version: "1.48.0"
+version: "1.49.0"
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
@@ -24,6 +24,7 @@ options:
   username: ""
   password: ""
   ha_token: ""
+  vapid_subject: ""
   enable_solar: true
   enable_battery: true
   enable_devices: true
@@ -32,6 +33,7 @@ schema:
   username: str
   password: password
   ha_token: str
+  vapid_subject: str?
   enable_solar: bool
   enable_battery: bool
   enable_devices: bool
