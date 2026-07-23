@@ -33,9 +33,8 @@ configuration:
   app_accounts:
     name: App accounts
     description: >-
-      E-mail addresses that get access to the app (e-mail = login name). Leave
-      "password" EMPTY → the user automatically receives an invitation e-mail
-      with a QR code and sets their own password. Only fill "password" if you
+      E-mail addresses that get access to the app (e-mail = login name). Leave the password field EMPTY → the user automatically receives an invitation e-mail
+      with a QR code and sets their own password. Only fill a password if you
       want to set one manually (no invitation is sent then). Use "lang" to choose
       the language of the invitation e-mail (nl or en).
   extra_accounts:

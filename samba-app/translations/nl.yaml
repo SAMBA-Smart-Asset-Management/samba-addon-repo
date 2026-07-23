@@ -34,9 +34,8 @@ configuration:
   app_accounts:
     name: App-accounts
     description: >-
-      E-mailadressen die toegang krijgen tot de app (e-mail = inlognaam). Laat
-      "password" LEEG → de gebruiker krijgt automatisch een uitnodigingsmail met
-      QR-code en kiest zelf een wachtwoord. Vul "password" alleen in als je
+      E-mailadressen die toegang krijgen tot de app (e-mail = inlognaam). Laat het wachtwoord-veld LEEG → de gebruiker krijgt automatisch een uitnodigingsmail met
+      QR-code en kiest zelf een wachtwoord. Vul een wachtwoord alleen in als je
       handmatig een wachtwoord wilt zetten (dan wordt er geen uitnodiging
       gestuurd). Met "lang" kies je de taal van de uitnodigingsmail (nl of en).
   extra_accounts:
