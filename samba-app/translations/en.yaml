@@ -36,7 +36,8 @@ configuration:
       E-mail addresses that get access to the app (e-mail = login name). Leave the password field EMPTY → the user automatically receives an invitation e-mail
       with a QR code and sets their own password. Only fill a password if you
       want to set one manually (no invitation is sent then). Use "lang" to choose
-      the language of the invitation e-mail (nl or en).
+      the language of the invitation e-mail (nl or en). Set "admin" to true to give
+      someone admin rights (manage users and the 2FA policy).
   extra_accounts:
     name: Allow extra accounts (max 10)
     description: >-

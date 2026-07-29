@@ -38,6 +38,8 @@ configuration:
       QR-code en kiest zelf een wachtwoord. Vul een wachtwoord alleen in als je
       handmatig een wachtwoord wilt zetten (dan wordt er geen uitnodiging
       gestuurd). Met "lang" kies je de taal van de uitnodigingsmail (nl of en).
+      Zet "admin" op true om iemand beheerrechten te geven (gebruikers beheren en
+      het 2FA-beleid aanpassen).
   extra_accounts:
     name: Extra accounts toestaan (max. 10)
     description: >-

@@ -1,6 +1,6 @@
 name: SAMBA App
 
-version: "1.82.2"
+version: "1.83.0"
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
@@ -43,9 +43,9 @@ schema:
   enable_devices: bool
   app_accounts:
     - email: str
-      name: str?
       password_leave_empty_for_invite: password?
       lang: list(nl|en)?
+      admin: bool?
   extra_accounts: bool
   site_url: str?
 image: ghcr.io/samba-smart-asset-management/samba-app
