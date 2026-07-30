@@ -30,6 +30,9 @@ configuration:
   enable_devices:
     name: Show devices module
     description: Shows the Devices module in the app.
+  enable_charging:
+    name: Show charging module
+    description: Shows the Charging module in the app.
   app_accounts:
     name: App accounts
     description: >-

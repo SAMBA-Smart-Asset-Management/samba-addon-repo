@@ -31,6 +31,9 @@ configuration:
   enable_devices:
     name: Apparaten-module tonen
     description: Toont de Apparaten-module in de app.
+  enable_charging:
+    name: Laadmodule tonen
+    description: Toont de Laadmodule in de app.
   app_accounts:
     name: App-accounts
     description: >-
