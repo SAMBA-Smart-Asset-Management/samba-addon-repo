@@ -1,5 +1,5 @@
 name: Solar Production
-version: "0.7.182"
+version: "0.7.185"
 slug: solar-production
 description: Solar production forecasting and control integration
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-solar-production
@@ -10,6 +10,9 @@ boot: auto
 init: false
 hassio_api: true
 homeassistant_api: true
+# Required for POST http://supervisor/core/restart in run.sh. Without it the
+# Supervisor answers 403 and the freshly deployed integration never loads.
+hassio_role: manager
 
 options: {}
 schema: {}
