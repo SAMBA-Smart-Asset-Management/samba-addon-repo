@@ -1,5 +1,5 @@
 name: Battery Optimizer
-version: "1.7.2"
+version: "1.8.0"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
@@ -33,6 +33,7 @@ options:
   degradation_cost_per_kwh: 0.06
   grid_connection_kw: 25.0
   # Battery Control
+  control_enabled: true
   grid_charging: true
   grid_discharging: true
   extend_buffering_periods: true
@@ -60,6 +61,7 @@ schema:
   degradation_cost_per_kwh: float(0,)
   grid_connection_kw: float(0.1,)
   # Battery Control
+  control_enabled: bool
   grid_charging: bool
   grid_discharging: bool
   extend_buffering_periods: bool
