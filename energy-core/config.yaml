@@ -1,5 +1,5 @@
 name: Samba Energy Core
-version: "0.14.6"
+version: "0.14.7"
 slug: energy-core
 description: Foundation energy accounting integration for SAMBA
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-core
@@ -10,6 +10,9 @@ boot: auto
 init: false
 hassio_api: true
 homeassistant_api: true
+# Required for POST http://supervisor/core/restart in run.sh. Without it the
+# Supervisor answers 403 and the freshly deployed integration never loads.
+hassio_role: manager
 
 options: {}
 schema: {}
