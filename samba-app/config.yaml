@@ -1,6 +1,6 @@
 name: SAMBA App
 
-version: "1.86.60"
+version: "1.86.61"
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
@@ -34,6 +34,10 @@ options:
   app_accounts: []
   extra_accounts: false
   site_url: ""
+  influx_url: ""
+  influx_db: ""
+  influx_user: ""
+  influx_password: ""
 schema:
   username: str?
   password: password?
@@ -50,4 +54,8 @@ schema:
       admin: bool?
   extra_accounts: bool
   site_url: str?
+  influx_url: str?
+  influx_db: str?
+  influx_user: str?
+  influx_password: password?
 image: ghcr.io/samba-smart-asset-management/samba-app
