@@ -1,6 +1,7 @@
 name: SAMBA App
 
-version: "1.86.68"
+version: "1.86.69"
+||||||| parent of 01326c0 (Grid limiter: net 15-min average vs offtake-only per phase (1.86.67))
 slug: samba-app
 description: SAMBA Energy Management Dashboard
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
