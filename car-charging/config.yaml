@@ -1,5 +1,5 @@
 name: Car Charging
-version: "0.64.3"
+version: "0.65.0"
 slug: car-charging
 description: EV charging integration (OCPP + Easee) with smart/solar-aware scheduling
 url: https://github.com/SAMBA-Smart-Asset-Management/samba-car-charging
