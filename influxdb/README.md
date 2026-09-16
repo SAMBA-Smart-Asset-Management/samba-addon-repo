@@ -14,17 +14,20 @@ site niet worden opgeleverd.
 
 ## Wat hier gebeurt
 
-Er wordt niets gebouwd. Deze map bevat alleen de add-on-definitie; het image staat nog
-publiek op GHCR en wordt gepind op de laatste gepubliceerde versie:
+Er wordt niets gebouwd. Deze map bevat alleen de add-on-definitie, en die wijst naar een
+kopie van het laatste gepubliceerde image in onze eigen privé-GHCR:
 
 ```
-ghcr.io/hassio-addons/influxdb/{arch}:5.0.2
+ghcr.io/samba-smart-asset-management/influxdb/{arch}:5.0.2
 ```
 
-Gecontroleerd op 16 september 2026: `5.0.2` geeft anoniem een manifest (amd64 en aarch64),
-`latest` bestaat niet meer. Daarom staat de versie vast en komen er geen upstream-updates
-meer. Willen we ooit echt weg van 1.x, dan is dat een migratie naar VictoriaMetrics of
-InfluxDB 3, geen update van deze map.
+De kopie is op 16 september 2026 gemaakt vanaf `ghcr.io/hassio-addons/influxdb` (amd64 en
+aarch64) met de eenmalige workflow `mirror-influxdb.yml` in `samba-dev-ops`. Daarmee zijn we
+niet afhankelijk van de vraag of upstream dat image laat staan, en gedraagt deze add-on zich
+als de rest: publieke metadata hier, privé image, pullen met dezelfde andy-samba-token.
+
+De versie staat vast; upstream-updates komen er niet meer. Willen we ooit echt weg van 1.x,
+dan is dat een migratie naar VictoriaMetrics of InfluxDB 3, geen update van deze map.
 
 ## Let op bij installatie
 
