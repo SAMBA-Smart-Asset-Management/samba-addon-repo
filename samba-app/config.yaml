@@ -1,0 +1,53 @@
+name: SAMBA App
+
+version: "2.57.1"
+slug: samba-app
+description: SAMBA Energy Management Dashboard
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-frontend
+arch:
+  - amd64
+startup: application
+init: false
+homeassistant_api: true
+hassio_api: true
+hassio_role: manager
+ingress: true
+ingress_port: 8099
+ingress_panel: true
+panel_icon: mdi:home-lightning-bolt
+panel_title: SAMBA App
+ports:
+  8080/tcp: 8080
+ports_description:
+  8080/tcp: SAMBA Web App (local dev)
+map:
+  - addon_config:rw
+options:
+  username: ""
+  password: ""
+  enable_default_login: true
+  ha_token: ""
+  enable_solar: true
+  enable_battery: true
+  enable_devices: true
+  enable_charging: true
+  app_accounts: []
+  extra_accounts: false
+  site_url: ""
+schema:
+  username: str?
+  password: password?
+  enable_default_login: bool
+  ha_token: str?
+  enable_solar: bool
+  enable_battery: bool
+  enable_devices: bool
+  enable_charging: bool
+  app_accounts:
+    - email: str
+      password_leave_empty_for_invite: password?
+      lang: list(nl|en)?
+      admin: bool?
+  extra_accounts: bool
+  site_url: str?
+image: ghcr.io/samba-smart-asset-management/samba-app

@@ -1,0 +1,22 @@
+name: Energy Price
+version: "0.14.0"
+slug: energy-price
+description: Dynamic electricity price integration
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-price
+arch:
+  - amd64
+startup: application
+boot: auto
+init: false
+hassio_api: true
+homeassistant_api: true
+# Required for POST http://supervisor/core/restart in run.sh. Without it the
+# Supervisor answers 403 and the freshly deployed integration never loads.
+hassio_role: manager
+
+options: {}
+schema: {}
+
+map:
+  - config:rw
+image: ghcr.io/samba-smart-asset-management/energy-price

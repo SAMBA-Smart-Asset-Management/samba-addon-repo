@@ -1,0 +1,44 @@
+name: SAMBA Monitoring
+version: "0.6.1"
+slug: samba-monitoring
+description: SAMBA fleet observability — logs to Grafana Cloud Loki, metrics to Mimir, addon inventory + version drift
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-monitoring
+# NOTE: no `image:` field here — this config is used by DEV (deploy.sh) which builds
+# locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
+# into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
+arch:
+  - amd64
+  # aarch64 and armv7 to be added once multi-arch hashes are resolved
+startup: services
+boot: auto
+init: false
+homeassistant_api: true
+hassio_api: true
+hassio_role: manager
+host_pid: true
+journald: true
+
+options:
+  instance_name: ""
+  # Logs (Loki) — requires API key with logs:write scope
+  grafana_loki_url: "https://logs-prod-012.grafana.net"
+  grafana_logs_user_id: "1530602"
+  grafana_logs_api_key: ""
+  # Entity states (Prometheus remote_write / Grafana Mimir) — requires API key with metrics:write scope
+  # Base URL only — code appends /api/v1/push. Leave empty to disable entity state collection.
+  grafana_influx_url: "https://prometheus-prod-65-prod-eu-west-2.grafana.net"
+  grafana_metrics_user_id: "3069854"
+  grafana_metrics_api_key: ""
+
+schema:
+  instance_name: str
+  grafana_loki_url: str
+  grafana_logs_user_id: str
+  grafana_logs_api_key: str
+  grafana_influx_url: str
+  grafana_metrics_user_id: str
+  grafana_metrics_api_key: str
+
+map:
+  - share:rw
+image: ghcr.io/samba-smart-asset-management/samba-monitoring

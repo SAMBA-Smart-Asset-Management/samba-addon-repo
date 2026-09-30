@@ -1,0 +1,42 @@
+# Energy Forecaster Add-on Configuration
+# NOTE: no `image:` field here — this config is used by DEV (deploy.sh) which builds
+# locally on the HA machine from the Dockerfile. The `image:` field is injected by CI
+# into the GitHub Pages copy of this file so that PROD machines pull from GHCR.
+name: Energy Forecaster
+version: "0.1.47"
+slug: energy_forecaster
+description: Prophet-based energy consumption forecasting for Home Assistant
+url: https://github.com/SAMBA-Smart-Asset-Management/samba-energy-forecaster
+arch:
+  - amd64
+startup: application
+boot: auto
+init: false
+homeassistant_api: true
+hassio_api: true
+
+options:
+  influxdb_url: "http://a0d7b954-influxdb:8086"
+  influxdb_username: "samba"
+  influxdb_password: ""
+  influxdb_database: "samba"
+  forecast_interval_minutes: 360
+  log_level: "info"
+  latitude: ""
+  longitude: ""
+  notify_service: ""
+
+schema:
+  influxdb_url: url
+  influxdb_username: str
+  influxdb_password: str
+  influxdb_database: str
+  forecast_interval_minutes: int(15,1440)
+  log_level: list(debug|info|warning|error)
+  latitude: str?
+  longitude: str?
+  notify_service: str?
+
+map:
+  - share:rw
+image: ghcr.io/samba-smart-asset-management/energy-forecaster
