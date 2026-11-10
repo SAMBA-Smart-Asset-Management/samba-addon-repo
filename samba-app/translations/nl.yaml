@@ -54,3 +54,11 @@ configuration:
       Publieke URL van deze site, bijv. https://klant.samba.energy. Wordt
       gebruikt voor de QR-code en de set-wachtwoord-link in de uitnodigingsmail.
       Laat leeg om automatisch te bepalen via de Cloudflared add-on.
+  notifications_enabled:
+    name: Meldingen via de app
+    description: >-
+      Uit = pushmeldingen en e-mailmeldingen staan in de app op "Binnenkort" en
+      er wordt niets verstuurd. Aan = de meldingen van SAMBA Main (die in het
+      notificatievak op het overzicht) gaan naar de toestellen waarop meldingen
+      aan staan, en per e-mail naar elk account met e-mailmeldingen aan.
+      Accounts met beheerrechten krijgen de e-mail standaard.
