@@ -1,5 +1,5 @@
 name: Battery Optimizer
-version: "1.23.0"
+version: "1.24.0"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
@@ -18,76 +18,37 @@ hassio_api: true
 hassio_role: manager
 
 options:
-  # OEM Battery Entity Mapping
-  oem_battery_state_entity: ""
-  oem_battery_power_entity: ""
-  oem_battery_online_entity: ""
-  battery_soc: ""
-
-  # Battery Physical Parameters
-  capacity_kwh: 10.0
-  charge_power_kw: 5.0
-  discharge_power_kw: 5.0
-  rte: 0.9
-  cycles_per_day_max: 1.0
-  soc_min: 0
-  soc_max: 100
-  degradation_cost_per_kwh: 0.06
-  # The degradation cost is a target for the AVERAGE margin per discharged kWh since
-  # this date (local, e.g. 2026-11-09 or 2026-11-09T20:20). Empty = from the first run.
-  degradation_budget_start: ""
-  grid_connection_kw: 25.0
-  # Cost per stored kWh (LCOS): what the battery system cost, and the full cycles it
-  # is warranted for. 0 euro hides the figure.
-  capex_eur: 0
-  cycle_life: 6000
-  # Battery Control
+  # The battery is set up in the integration SAMBA Battery (Settings → Devices &
+  # services); this add-on reads it from there (sensor.sb_battery).
+  # Observe-only when off: the plan is made and published, the battery not steered.
   control_enabled: true
+  # Defaults for the app's optimisation choice (Batterij → Control).
   grid_charging: true
   grid_discharging: true
-  extend_buffering_periods: true
-  # How far below the plan bidirectional buffering may draw the battery, in % of
-  # capacity. Below 5 the buffer cannot make room to absorb and costs money.
-  buffer_reserve_pct: 10
-
-  # History Tracking
-  history_enabled: true
-
-  # Fallback Mode
-  fallback_mode: "Idle"
 
 schema:
-  # OEM Battery Entity Mapping
-  oem_battery_state_entity: str
-  oem_battery_power_entity: str
-  oem_battery_online_entity: str?
-  battery_soc: str
-
-  # Battery Physical Parameters
-  capacity_kwh: float(0.1,)
-  charge_power_kw: float(0.1,)
-  discharge_power_kw: float(0.1,)
-  rte: float(0.1,1.0)
-  cycles_per_day_max: float(0.1,)
-  soc_min: int(0,100)
-  soc_max: int(0,100)
-  degradation_cost_per_kwh: float(0,)
-  degradation_budget_start: str?
-  grid_connection_kw: float(0.1,)
-  capex_eur: float(0,)?
-  cycle_life: int(0,)?
-  # Battery Control
   control_enabled: bool
   grid_charging: bool
   grid_discharging: bool
-  extend_buffering_periods: bool
-  buffer_reserve_pct: float(5,100)
 
-  # History Tracking
-  history_enabled: bool
-
-  # Fallback Mode
-  fallback_mode: list(Idle|Buffering charge|Buffering discharge)
+  # Only for sites without SAMBA Battery; with it these come from sensor.sb_battery
+  # and stay empty here (HA lists them under unused optional options).
+  battery_soc: str?
+  oem_battery_state_entity: str?
+  oem_battery_power_entity: str?
+  oem_battery_online_entity: str?
+  capacity_kwh: float(0.1,)?
+  charge_power_kw: float(0.1,)?
+  discharge_power_kw: float(0.1,)?
+  rte: float(0.1,1.0)?
+  cycles_per_day_max: float(0.1,)?
+  soc_min: int(0,100)?
+  soc_max: int(0,100)?
+  degradation_cost_per_kwh: float(0,)?
+  degradation_budget_start: str?
+  grid_connection_kw: float(0.1,)?
+  capex_eur: float(0,)?
+  cycle_life: int(0,)?
 
 map:
   - share:rw
