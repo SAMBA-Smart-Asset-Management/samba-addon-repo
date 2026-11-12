@@ -1,5 +1,5 @@
 name: Battery Optimizer
-version: "1.24.0"
+version: "1.25.0"
 slug: battery-optimizer
 description: Optimizes battery charge/discharge schedule based on energy prices and forecasts
 url: https://github.com/andy-moore-energy/scheduler
@@ -22,14 +22,11 @@ options:
   # services); this add-on reads it from there (sensor.sb_battery).
   # Observe-only when off: the plan is made and published, the battery not steered.
   control_enabled: true
-  # Defaults for the app's optimisation choice (Batterij → Control).
-  grid_charging: true
-  grid_discharging: true
+  # Grid charging / discharging are the app's choice (Batterij → Control,
+  # Kostenoptimalisatie or Zelfconsumptie), kept by the add-on in bo_ui_controls.
 
 schema:
   control_enabled: bool
-  grid_charging: bool
-  grid_discharging: bool
 
   # Only for sites without SAMBA Battery; with it these come from sensor.sb_battery
   # and stay empty here (HA lists them under unused optional options).
